@@ -1,9 +1,19 @@
 <h1>User List</h1>
 
-<% @users.each do |user|%>
-	<h2><%= link_to user.name, user_path(user)%></h2>
-<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+   </tr>
 
-<%= link_to 'Edit User', edit_user_path(@user) %>
+<% @users.each do |user|%>
+	<tr>
+		<td><%= link_to user.name, user_path(user)%></td>
+		<td><%= link_to "Edit", edit_user_path(user) %></td>
+		<td>Delete</td>
+	</tr>
+<% end %>
+</table>
 
 <%= link_to 'Add User', new_user_path %>

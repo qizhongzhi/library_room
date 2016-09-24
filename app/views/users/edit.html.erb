@@ -1,1 +1,7 @@
-<h1>Edit Book</h1>
+<h1>Edit User</h1>
+<%= simple_form_for @user, :html => {:multipart => true} do |f| %>
+	<%= f.input :name, label: "Name" %>
+ 	<%= f.input :address, label: "Address" %>
+ 	<%= f.input :telephone, label: "Telephone Number" %>
+  	<%= f.button :submit %>
+<% end %>

@@ -1,15 +1,4 @@
-<%= simple_form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for @user do |f| %>
 
     <%= f.input :email, label: "Email", autofocus: true, required: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
@@ -17,10 +6,6 @@
     <%= f.input :name, label: "Name", required: true %>
     <%= f.input :address, label: "Address", required: true %>
     <%= f.input :telephone, label: "Telephone", required: true %>
-
-
-    <div class="form-actions">
-      <%= f.button :submit, "Add User" %>
-    </div>
+    <%= f.button :submit %>
 
 <% end %>

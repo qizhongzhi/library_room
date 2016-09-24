@@ -3,9 +3,6 @@
     <%= f.input :email, label: "Email", autofocus: true, required: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
-    <%= f.input :name, label: "Name", required: true %>
-    <%= f.input :address, label: "Address", required: true %>
-    <%= f.input :telephone, label: "Telephone", required: true %>
     <%= f.button :submit %>
 
 <% end %>

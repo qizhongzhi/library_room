@@ -1,9 +1,11 @@
-<p>User Name:</p>
-<h3><%= @user.name %></h3>
-<p>User Address:</p>
-<h3><%= @user.address %></h3>
-<p>User Telephone Number:</p>
-<h3><%= @user.telephone %></h3>
+<p>Name:</p>
+<h4><%= @user.name %></h4>
+<p>Email Address:</p>
+<h4><%= @user.email %></h4>
+<p>Address:</p>
+<h4><%= @user.address %></h4>
+<p>Telephone Number:</p>
+<h4><%= @user.telephone %></h4>
 
 <%= link_to 'Back to User List', users_path %>
 <%= link_to "Edit", edit_user_path(@user) %>

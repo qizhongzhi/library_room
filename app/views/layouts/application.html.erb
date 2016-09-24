@@ -45,9 +45,8 @@
     </nav>
 
    
-
-    <p class="notice"><%= notice %></p>
-  	<p class="alert"><%= alert %></p>
+    <% if notice %><div class="notice"><h4><%= notice %></h4></div><% end %>
+  	<% if notice %><div class="alert"><h4><%= alert %></h4></div><% end %>
 
 
     <%= yield %>

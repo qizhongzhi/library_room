@@ -3,6 +3,7 @@
 	<%= f.input :name, label: "Name" %>
  	<%= f.input :address, label: "Address" %>
  	<%= f.input :telephone, label: "Telephone Number" %>
+ 	<%= f.select( :user_type, options_for_select([['Admin', 2],['User', 3]])) %>
   	<%= f.button :submit %>
 <% end %>
 

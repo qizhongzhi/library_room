@@ -6,7 +6,24 @@
 <h4><%= @user.address %></h4>
 <p>Telephone Number:</p>
 <h4><%= @user.telephone %></h4>
+<p>User Type:</p>
+<% if @user.user_type ==1 %>
+    <h4>Preconfigure Admin</h4>
+<% elsif @user.user_type ==2 %>
+    <h4>Admin</h4>
+<% elsif @user.user_type ==3 %>
+    <h4>User</h4>
+<% end %>
+
+
 
 <%= link_to 'Back to User List', users_path %>
-<%= link_to "Edit", edit_user_path(@user) %>
-<%= link_to "Delete", user_path(@user), method: :delete, data: {confirm: "Are you sure?"} %>
+<% if user_signed_in? %>
+	<% @user_temp = current_user %>
+  	<% if @user_temp.id == @user.id || (@user_temp.user_type ==2 && @user.user_type != 1) || @user_temp.user_type ==1 %>	
+		<td><%= link_to "Edit", edit_user_path(@user) %></td>
+	<% end %>
+	<% if (@user_temp.user_type ==2 && @user.user_type != 1) || @user_temp.user_type ==1 || @user_temp.id == @user.id %>	
+		<td><%= link_to "Delete", user_path(@user), method: :delete, data: {confirm: "Are you sure?"} %></td>
+	<% end %>
+<% end %>

@@ -1,4 +1,12 @@
 source 'https://rubygems.org'
+
+group :development, :test do
+  gem 'rspec-rails',      ">= 2.0.0.beta"
+end
+
+gem 'bookable', '~> 0.0.52'
+gem 'responders', '~> 2.0'
+
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
@@ -11,7 +19,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'coffee-script-source', '1.8.0'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -6,7 +6,7 @@
 <% else %>
     <% @search.search_rooms.each do |c| %>
         <br>
-        <div class="library_room">
+        <div class="room">
           <%= link_to c.name,  room_path(c)%>
           <%= link_to "Show all bookings", room_bookings_path(c) %>
           <%= link_to "Delete", room_path(c), data: { confirm: 'Are you sure?' }, method: :delete %>

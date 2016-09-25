@@ -1,5 +1,5 @@
 class Search < ActiveRecord::Base
-  belongs_to :room
+ 
   def search_rooms
     rooms = Room.all
 

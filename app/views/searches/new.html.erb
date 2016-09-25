@@ -1,0 +1,19 @@
+<h1>Advanced Search</h1>
+
+<%= form_for @search, html:{class: "pure-form"} do |s| %>
+  <div class = "field">
+    <%= s.label :name %><br />
+    <%= s.text_field :name, placeholder: "Room number" %>
+  </div>
+    <div class = "field">
+      <%= s.label :size %><br />
+      <%= s.select :size, options_for_select(@size), :include_blank => true %>
+    </div>
+    <div class = "field">
+      <%= s.label :location %><br />
+      <%= s.select :location, options_for_select(@location), :include_blank => true %>
+    </div>
+  <div class ="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+<% end %>
+
+<p><%= link_to "Back", rooms_path%></p>

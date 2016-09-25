@@ -1,0 +1,24 @@
+<h1>Search Result</h1>
+<p><%= link_to "Back", new_search_path %></p>
+
+<% if @search.search_rooms.empty? %>
+   <p>No Record Found</p>
+<% else %>
+    <% @search.search_rooms.each do |c| %>
+        <br>
+        <div class="library_room">
+          <%= link_to c.name,  room_path(c)%>
+          <%= link_to "Show all bookings", room_bookings_path(c) %>
+          <%= link_to "Delete", room_path(c), data: { confirm: 'Are you sure?' }, method: :delete %>
+          <%= link_to "Edit", edit_room_path(c) %>
+          <%= link_to "Add booking", new_room_booking_path(c) %>
+        </div>
+        <!--
+        <div class = "div">
+          <h1><%= c.name %></h1>
+          <p>Size: <%= c.size %></p>
+          <p>Location: <%= c.location %></p>
+        </div>
+        -->
+  <% end %>
+<% end %>

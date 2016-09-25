@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924192338) do
+ActiveRecord::Schema.define(version: 20160925181117) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "length"
+    t.integer  "room_id"
+    t.integer  "user_id"
+    t.index ["room_id"], name: "index_bookings_on_room_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "size"
+    t.string "location"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "size"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

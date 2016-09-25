@@ -1,0 +1,23 @@
+<h3>Library Rooms</h3>
+<%= form_tag rooms_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: "Room number" %>
+      <%= submit_tag "Search" %>
+    <p>
+<% end %>
+
+<%= link_to "Advanced Search", new_search_path , style: "color: orange"%>
+<p></p>
+
+<% @rooms.each do |room| %>
+  <div class="room">
+    <%= link_to room.name,  room_path(room)%>
+    <%= link_to "Show all bookings", room_bookings_path(room) %>
+    <%= link_to "Delete", room_path(room), data: { confirm: 'Are you sure?' }, method: :delete %>
+    <%= link_to "Edit", edit_room_path(room) %>
+    <%= link_to "Add booking", new_room_booking_path(room) %>
+  </div>
+<% end %>
+
+<%= link_to "Add room", new_room_path %>
+<%= link_to "Back", rooms_path%>

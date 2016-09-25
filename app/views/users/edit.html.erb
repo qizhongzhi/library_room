@@ -3,7 +3,16 @@
 	<%= f.input :name, label: "Name" %>
  	<%= f.input :address, label: "Address" %>
  	<%= f.input :telephone, label: "Telephone Number" %>
- 	<%= f.select( :user_type, options_for_select([['Admin', 2],['User', 3]])) %>
+ 	<% if user_signed_in? %>
+ 		<% @user_temp = current_user %>
+ 			<% if (@user_temp.user_type ==2 && @user.user_type != 1) || @user_temp.user_type ==1 %>
+ 				<h5><strong>User Type</strong></h5>
+ 				<%= f.select( :user_type, options_for_select([['Admin', 2],['User', 3]])) %>
+ 			<% end %>
+ 	<% end %>
+ 	<br>
+ 	<br>
+ 	<br>
   	<%= f.button :submit %>
 <% end %>
 

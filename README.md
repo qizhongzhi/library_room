@@ -16,11 +16,11 @@ README
 `rake db:migrate`  
 `bundle install`  
 `bundle update`  
-`rails s`  
+`rails server`  
 
 The preconfigured Admin needs to be created in the command line for safety. 
 First, a user account needs to be signed up in the website with his/her email, password, name ,address and telephone number. Then set this user as the configured member in the rails console using the following commands.  
-`rails c`  
+`rails console`  
 `User.connection`  
 `@user = User.last`  
 `@user.user_type = 1`  

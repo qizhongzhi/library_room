@@ -20,14 +20,23 @@
     <td>
       <%= (booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
     </td>
-    <td style="color:Orange">
-      <% @user = User.find(booking.user_id) %>
-      <%= @user.name %>
-    </td>
-    <td><%= link_to "Edit", edit_room_booking_path(@room, booking) %>
-    </td>
-    <td><%= link_to "Delete", room_booking_path(@room, booking), data: { confirm: 'Are you sure?' }, method: :delete , style: "color: red"%>
-    </td>
+
+
+    <% if user_signed_in? %>
+        <% @user = current_user %>
+        <% if (@user.user_type <=2 ) || @user.id == booking.user_id %>  
+          <td style="color:Orange">
+            <% @user = User.find(booking.user_id) %>
+            <%= @user.name %>
+          </td>
+          <td><%= link_to "Edit", edit_room_booking_path(@room, booking) %>
+          </td>
+          <td><%= link_to "Delete", room_booking_path(@room, booking), data: { confirm: 'Are you sure?' }, method: :delete , style: "color: red"%>
+          </td>
+        <% end %>
+    <% end %>
+
+
   </tr>
 
   <% end %>

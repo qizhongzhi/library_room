@@ -20,15 +20,10 @@
         </div>
 
         <ul class = "nav navbar-nav">
-              <li><%= link_to "Userlist", users_path %></li>
-
-        </ul>
-
-        <ul class = "nav navbar-nav">
 
            <% if user_signed_in? %>
+           <li><%= link_to "Userlist", users_path %></li>
             <% @user = current_user %>
-            <li><%= link_to "My Reservations(not done)", user_path(1) %></li>
             <li><%= link_to "My Profile", user_path(@user) %></li>
           <% end %>
           

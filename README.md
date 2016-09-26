@@ -1,6 +1,6 @@
 README
 =====
-####The library_room repository creates a room booking web application system where admins and library member can sign up and edit their profiles and also can reseve diverse rooms in different libraries under corresponding regulations. 
+####The library_room repository creates a room booking web application system where admins and library member can sign up and edit their profiles and also can reserve diverse rooms in different buildings under corresponding regulations.   
 
 ####Ruby and rails version
 
@@ -12,14 +12,16 @@ README
 
 ####Pre-configuration 
  Download the codes through the Github.  
-`git clone https://github.com/LeoJY/library_room.git`  
-`rake db:migrate`  
+`git clone https://github.com/LeoJY/library_room.git`    
 `bundle install`  
 `bundle update`  
 `rails server`  
+`rake db:migrate` 
+
+####The database is empty now which needs to be added preconfigured Admin, Admin, Library Members and Rooms. 
 
 The preconfigured Admin needs to be created in the command line for safety. 
-First, a user account needs to be signed up in the website with his/her email, password, name ,address and telephone number. Then set this user as the configured member in the rails console using the following commands.  
+First, a user account needs to be signed up in the website with his/her email, password, name, address and telephone number. Then set this user as the configured member in the rails console using the following commands.  
 `rails console`  
 `User.connection`  
 `@user = User.last`  
@@ -28,33 +30,49 @@ First, a user account needs to be signed up in the website with his/her email, p
 `exit`  
 
 
+####Advanced Search 
+User can use advanced search to search room using name, size and location.  
+
 ####User Permissions
 1. Preconfigured admin:  
-the account can only be delete in console window for safety.  
-edit and view own profile  
-edit, view and delete everyone else's account and profile 
-add new users or admin while logging in
+Account can only be delete in console window for safety and cannot be delete on the website.  
+Edit and view own profile  
+Edit, view and delete everyone else's account and profile 
+Add new library member or admin while logging in  
+Add room with corresponding room number, building and size   
+Book room
+Book room on behalf of others 
+Delete everyons's booking reservation  
+View the everyons's booking history of a room
+Delete a room from the system  
 
 2. Admin:
-edit, view and delete his/her account and profile  
-edit and delete everyone's account and profile  except preconfigured admin  
-add new users or adimins while logging in  
-view everyone's profile  
+Edit and view his/her account and profile  
+Edit and delete everyone's account and profile except herself/himself and preconfigured admin  
+Add new library member or adimins while logging in  
+View everyone's profile  
+Add room with corresponding room number, building and size  
+Book room
+Book room on behalf of others
+Delete everyons's booking reservation  
+View the everyons's booking history of a room
+Delete a room from the system    
 
-3. User:  
-edit, view and delete his/her account and profile  
-view everyone's profile  
+3. Library Member:  
+Edit, view and delete his/her account and profile    
+View everyone's profile  
+Book room
+Delete his/her booking reservation  
+View the his/her booking history of a room
+
+
+####Matters needing attention
+1. When users finish the booking early, they can delete the booking manually by deleting his booking record. Also when the booking time is over, the room will be released automatically.  
+2. When the room is booked beyond one week from present day, it will show prohibit error 'Start time cannot be booked beyond a week'.  
+3. When choosing 'Show all Bookings', it will show the booking time of the definite room, the user name who is booking the room and its status. 
+4. When viewing the reservation history of library member, directly choose 'See All Bookings' and see the library member.  
+5. The root path website of 'Library Room Booking' shows 'Room Number', 'Show all bookings' and 'Add booking'. 
+6. The booking history for a partcular user is stored in different rooms' booking history 
 
 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

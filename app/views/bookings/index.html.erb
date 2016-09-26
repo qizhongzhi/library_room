@@ -11,8 +11,20 @@
 
   <% @bookings.each do |booking| %>
       <% if booking.start_time < Time.current %>
-          <h2 style="color:red">Unavailable now</h2>
+          <% @flag = false %>
+      <% else %>
+          <% @flag = true %>
       <% end %>
+  <% end %>
+
+  <% if @flag == false %>
+    <h2 style="color:red">The room is in use now</h2>
+  <% else %>
+    <h2 style="color:green">The room is currently available</h2>
+  <% end %>
+
+  <% @bookings.each do |booking| %>
+      
   <tr>
     <td>
       <%= booking.start_time.strftime('%e %b %Y %H:%M%p') %>

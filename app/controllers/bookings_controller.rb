@@ -19,7 +19,12 @@ class BookingsController < ApplicationController
     @booking.room = @room
     @booking.start_time = @booking.start_time
     @booking.room = @room
-    @booking.user_id = params[:user_id]
+    if params[:user_id] != nil
+      @booking.user_id = params[:user_id]
+    else
+      @booking.user_id = current_user.id
+    end
+    
     if @booking.save
       redirect_to room_bookings_path(@room, method: :get)
     else

@@ -8,8 +8,22 @@ README
    
  Rails 5.0.0.1
 
-####System dependencies
+###Online Deployment  
+####Development Instructions
+Use Heroku as the online development framework. The link of the room booking web application system is  
 
+`https://floating-taiga-45578.herokuapp.com/`
+
+You cannot sign up as admin user, however the admin user can be assigned by using the existing admin accounts to edit the user profile (set the user type from "User" to "Admin").
+
+You can log in as Precinfigured Admin, Admin, or Library Member. The usernames and passwords we preconfigured in the system is as following:
+  
+Preconfigured Admin account: trump@gmail.com Key: donaldtrump  
+Admin account: hillary@gmail.com Key:hillaryclinton  
+User account: obama@gmail.com Key:barackobama  
+
+
+###Local Testing 
 ####Pre-configuration 
  Download the codes through the Github.  
 `git clone https://github.com/LeoJY/library_room.git`    

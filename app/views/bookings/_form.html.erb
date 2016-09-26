@@ -1,8 +1,16 @@
 <%= form_for([@room, @booking]) do |f| %>
-    <p>
-      <%= f.label 'user_id', 'User:' %>
-      <%= select_tag(:user_id, options_for_select(User.all.map{|c| [c.name, c.id]}), :prompt => "Select a user") %>
-    </p>
+
+    <% if user_signed_in? %>
+        <% @user = current_user %>
+          <% if @user.user_type <= 2 %> 
+            <p>
+              <%= f.label 'user_id', 'User:' %>
+              <%= select_tag(:user_id, options_for_select(User.all.map{|c| [c.name, c.id]}), :prompt => "Select a user") %>
+            </p>
+          <% end %>
+    <% end %>
+    
+
     <p>
       <%= f.label 'start_time', 'Start Time: ' %>
       <%= f.datetime_select :start_time, { minute_step: 15 } %>

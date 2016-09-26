@@ -5,7 +5,7 @@
           <% if @user.user_type <= 2 %> 
             <p>
               <%= f.label 'user_id', 'User:' %>
-              <%= select_tag(:user_id, options_for_select(User.all.map{|c| [c.name, c.id]}), :prompt => "Select a user") %>
+              <%= select_tag(:user_id, options_for_select(User.all.map{|c| [c.name, c.id]}), :prompt => "Select a user", :required => true)  %>
             </p>
           <% end %>
     <% end %>

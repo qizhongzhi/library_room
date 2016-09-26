@@ -8,7 +8,13 @@ gem 'bookable', '~> 0.0.52'
 gem 'responders', '~> 2.0'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'

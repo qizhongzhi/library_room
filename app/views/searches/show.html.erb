@@ -6,12 +6,17 @@
 <% else %>
     <% @search.search_rooms.each do |c| %>
         <br>
-        <div class="library_room">
+        <div class="room">
           <%= link_to c.name,  room_path(c)%>
           <%= link_to "Show all bookings", room_bookings_path(c) %>
-          <%= link_to "Delete", room_path(c), data: { confirm: 'Are you sure?' }, method: :delete %>
-          <%= link_to "Edit", edit_room_path(c) %>
-          <%= link_to "Add booking", new_room_booking_path(c) %>
+          <% if user_signed_in? %>
+            <%= link_to "Add Booking", new_room_booking_path(c) %>
+            <% @user = current_user %>
+            <% if @user.user_type <= 2 %> 
+              <%= link_to "Edit", edit_room_path(c) %>
+              <%= link_to "Delete", room_path(c), data: { confirm: 'Are you sure?' }, method: :delete, style: "color: red" %>
+            <% end %>
+          <% end %>
         </div>
         <!--
         <div class = "div">
@@ -22,3 +27,5 @@
         -->
   <% end %>
 <% end %>
+
+

@@ -1,3 +1,11 @@
-<%= render 'form' %>
-
+<%= form_for @room do |f| %>
+    <%= render 'errors' %>
+    <%= f.label 'name', 'Name' %>
+    <%= f.text_field 'name', placeholder: '0000'%>
+    <%= f.label 'location', 'Location' %>
+    <%= f.select(:location, options_for_select([['Hunt Library'], ['D.H.Hill Library']]), :prompt => "Select a library") %>
+    <%= f.label 'size', 'Size' %>
+    <%= f.select(:size, options_for_select([['3 people'], ['6 people'],['12 people']]), :prompt => "Select a size") %>
+    <%= f.submit 'Submit' %>
+<% end %>
 <%= link_to "Back", root_path %>

@@ -1,11 +1,14 @@
 <%= form_for([@room, @booking]) do |f| %>
     <p>
-
-      <%= f.label 'start_time', 'Start time' %>
+      <%= f.label 'user_id', 'User:' %>
+      <%= select_tag(:user_id, options_for_select(User.all.map{|c| [c.name, c.id]}), :prompt => "Select a user") %>
+    </p>
+    <p>
+      <%= f.label 'start_time', 'Start Time: ' %>
       <%= f.datetime_select :start_time, { minute_step: 15 } %>
     </p>
     <p>
-      <%= f.label 'length', 'Length of booking in hours' %>
+      <%= f.label 'length', 'Booking Hours (max: 2 hours): ' %>
       <%= f.number_field 'length',:value => 0, min: 0 , max: 2%>
     </p>
     <%= f.submit 'Submit' %>

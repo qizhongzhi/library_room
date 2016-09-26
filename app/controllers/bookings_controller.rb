@@ -15,10 +15,11 @@ class BookingsController < ApplicationController
 
   def create
     # @booking =  Booking.new(params[:booking].permit(:room_id, :start_time, :length))
-    @booking = current_user.bookings.build(params[:booking].permit(:room_id, :start_time, :length))
+    @booking = current_user.bookings.build(params[:booking].permit(:room_id, :start_time, :length, :user_id))
     @booking.room = @room
     @booking.start_time = @booking.start_time
     @booking.room = @room
+    @booking.user_id = params[:user_id]
     if @booking.save
       redirect_to room_bookings_path(@room, method: :get)
     else

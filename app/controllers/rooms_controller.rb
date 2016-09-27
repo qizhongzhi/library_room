@@ -24,6 +24,8 @@ class RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:id])
+    @booking_of_room = Booking.find(@booking.room)     ## 09-26
+    @booking_of_room.destroy                          ## 09-26
     @room.destroy
     redirect_to rooms_path
   end

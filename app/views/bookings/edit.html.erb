@@ -11,7 +11,7 @@
     </p>
     <p>
       <%= f.label 'length', 'Booking Hours (max: 2 hours): ' %>
-      <%= f.number_field 'length',:value => 0, min: 0 , max: 2%>
+      <%= f.number_field :length, min: 0 , max: 2%>
     </p>
     <%= f.submit 'Submit' %>
     <%= link_to "Back", root_path %>

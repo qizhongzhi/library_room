@@ -1,8 +1,8 @@
 <h1>Edit User</h1>
 <%= simple_form_for @user, :html => {:multipart => true} do |f| %>
-	<%= f.input :name, label: "Name" %>
- 	<%= f.input :address, label: "Address" %>
- 	<%= f.input :telephone, label: "Telephone Number" %>
+	<%= f.input :name, label: "Name", placeholder: 'Jane Doe', required: true  %>
+ 	<%= f.input :address, label: "Address", placeholder: 'Street Number, APT Number, City, Zip Code, State, Country', required: true %>
+ 	<%= f.input :telephone, label: "Telephone Number", placeholder: '000-000-0000', required: true %>
  	<% if user_signed_in? %>
  		<% @user_temp = current_user %>
  			<% if (@user_temp.user_type ==2 && @user.user_type != 1) || @user_temp.user_type ==1&& @user.user_type != 1 %>
@@ -15,5 +15,3 @@
  	<br>
   	<%= f.button :submit %>
 <% end %>
-
-<%= link_to 'Back to User List', users_path %>

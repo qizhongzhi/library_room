@@ -24,10 +24,6 @@ class RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:id])
-<<<<<<< HEAD
-    @booking_of_room = Booking.find(@booking.room)     ## 09-26
-    @booking_of_room.destroy                          ## 09-26
-=======
 
     @bookings=Booking.all
         @bookings.each do |booking|
@@ -35,8 +31,6 @@ class RoomsController < ApplicationController
             booking.destroy
         end
     end
-
->>>>>>> 6d74c0f8aab1872774b6b4619e7c3759fe8a54bf
     @room.destroy
     redirect_to rooms_path
   end

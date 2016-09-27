@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :find_user, only:[:show, :edit, :update, :destroy]
+	before_action :find_user, only:[:show, :edit, :update, :destroy,:reservations]
 
 	def index
 		@users = User.all.order("created_at DESC")
@@ -48,6 +48,10 @@ class UsersController < ApplicationController
       		format.json { head :no_content }
       		
     	end
+  	end
+
+  	def reservations
+  		
   	end
 
 	private

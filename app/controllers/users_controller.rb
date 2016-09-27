@@ -36,10 +36,17 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-    	@user.destroy
+		@bookings=Booking.all
+      	@bookings.each do |booking|
+		    if booking.user_id == @user.id
+		        booking.destroy
+		    end
+		end
+	   	@user.destroy
     		respond_to do |format|
       		format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
       		format.json { head :no_content }
+      		
     	end
   	end
 

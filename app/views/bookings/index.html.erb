@@ -27,10 +27,10 @@
       
   <tr>
     <td>
-      <%= booking.start_time.strftime('%e %b %Y %H:%M%p') %>
+      <%= booking.start_time.strftime('%b %d %Y %H:%M%p') %>
     </td>
     <td>
-      <%= (booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
+      <%= (booking.calculate_end_time + 60).strftime('%b %d %Y %H:%M%p') %>
     </td>
 
 

@@ -48,8 +48,11 @@
     <% if notice %><div class="notice"><h4><%= notice %></h4></div><% end %>
   	<% if notice %><div class="alert"><h4><%= alert %></h4></div><% end %>
     <% if user_signed_in? %>
-        <% @user = current_user %>
-        <p>Sign in as <%= current_user.name %></p>
+        <% @user = current_user %>       
+        <% if @user.user_type ==1 %><p>Sign in as <strong><%= current_user.name %></strong> (Preconfigured Admin User)</p>
+        <% elsif @user.user_type ==2 %><p>Sign in as <strong><%= current_user.name %></strong> (Admin User)</p>
+        <% elsif @user.user_type ==3 %><p>Sign in as <strong><%= current_user.name %></strong> (User)</p>
+        <% end %>
     <% end %>
 
     <%= yield %>

@@ -24,6 +24,14 @@ class RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:id])
+
+    @bookings=Booking.all
+        @bookings.each do |booking|
+        if booking.room_id == @room.id
+            booking.destroy
+        end
+    end
+
     @room.destroy
     redirect_to rooms_path
   end

@@ -1,0 +1,48 @@
+<p>User name:</p>
+<h4><%= @user.name %></h4>
+<p>Your reservations: </p>
+
+<table class="bookings_table">
+	<tr>
+	    <th>Location </th>
+	    <th>Name </th>
+	    <th>Size </th>
+	    <th>Start time </th>
+	    <th>End time </th>
+	  </tr>
+<% @bookings=Booking.all %>
+<% @flag = true %>
+<% @bookings.each do |booking| %>
+	<% if booking.user_id == @user.id %>
+		<% @flag = false %>
+		<% @room=Room.find(booking.room_id) %>
+			<tr>
+			<td>
+				<%= @room.location %>
+			</td>
+			<td>
+				<%= @room.name %>
+			</td>
+			<td>
+				<%= @room.size %>
+			</td>
+		    <td>
+		      <%= booking.start_time.strftime('%b %d %Y %H:%M%p') %>
+		    </td>
+		    <td>
+		      <%= (booking.calculate_end_time + 60).strftime('%b %d %Y %H:%M%p') %>
+		    </td>
+		    <td><%= link_to "Edit", edit_room_booking_path(@room, booking) %></td>
+	        <td><%= link_to "Delete", room_booking_path(@room, booking), data: { confirm: 'Are you sure?' }, method: :delete , style: "color: red"%></td>
+		    <br>
+
+		  </tr>
+		<% end %>
+	<% end %>
+	<% if @flag == true %>
+		<h4>The user do not have any reservations</h4>
+	<% end %>
+</table>
+
+<%= link_to "Back", :back %><br>
+<%= link_to "Back to User List", users_path %>

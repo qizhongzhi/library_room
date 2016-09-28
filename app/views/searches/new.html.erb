@@ -13,6 +13,10 @@
       <%= s.label :location %><br />
       <%= s.select :location, options_for_select(@location), :include_blank => true %>
     </div>
+    <div class = "field">
+      <%= s.label :status %><br />
+      <%= s.select :status, options_for_select(@status), :include_blank => true %>
+    </div>
   <div class ="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
 <% end %>
 

@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
     @room = Room.create(room_params)
     @room.location= params[:location]
     @room.size = params[:size]
+    @room.status = "Available";
     if @room.save
       name = @room.name
       redirect_to rooms_path
@@ -57,7 +58,7 @@ class RoomsController < ApplicationController
   private
 
     def room_params
-      params.require(:room).permit(:name,:location, :size, :delete)
+      params.require(:room).permit(:name,:location,:size,:status, :delete)
     end
 
 end

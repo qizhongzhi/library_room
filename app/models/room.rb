@@ -8,7 +8,8 @@ class Room < ActiveRecord::Base
   end
 
   validates :location, :size, presence: true, uniqueness: false
-  validates :name, uniqueness: true
+  validates :status, presence:true
+  validates_uniqueness_of :name, scope: :location
   has_many :bookings
   has_many :searches
 end

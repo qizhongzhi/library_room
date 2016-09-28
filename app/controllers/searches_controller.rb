@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
     @search = Search.new
     @location = Room.uniq.pluck(:location)
     @size = Room.uniq.pluck(:size)
+    @status = Room.uniq.pluck(:status)
   end
 
   def create

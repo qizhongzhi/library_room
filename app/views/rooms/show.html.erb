@@ -2,6 +2,7 @@
 <h3>Room <%= @room.name %></h3>
 <h3>Location: <%= @room.location %></h3>
 <h3>Size: <%= @room.size %></h3>
+<h3>Status: <%= @room.status %></h3>
 
 <div class="room">
     <%= link_to "Show all Bookings", room_bookings_path(@room) %>

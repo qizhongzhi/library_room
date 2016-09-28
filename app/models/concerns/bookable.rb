@@ -83,7 +83,14 @@ module Bookable
     end
   end
 
-
+  def destory_booking_after_endtime    #09-27
+    @bookings=Booking.all
+        @bookings.each do |booking|
+        if booking.end_time < DateTime.current
+            booking.destroy
+        end
+    end
+  end
 
   def calculate_end_time
     start_time = validate_start_time

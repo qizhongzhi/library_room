@@ -11,13 +11,15 @@
 
   <% @bookings.each do |booking| %>
       <% if booking.start_time < Time.current %>
-          <% @flag = false %>
+          <% @room.status = "Booked" %>
+          <% @room.update_attributes(:status => "Booked") %>
       <% else %>
-          <% @flag = true %>
+          <% @room.status= "Available" %>
+          <% @room.update_attributes(:status => "Available") %>
       <% end %>
   <% end %>
 
-  <% if @flag == false %>
+  <% if @room.status == "Booked" %>
     <h2 style="color:red">The room is in use now</h2>
   <% else %>
     <h2 style="color:green">The room is currently available</h2>

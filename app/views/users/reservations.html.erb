@@ -32,8 +32,8 @@
 		    <td>
 		      <%= (booking.calculate_end_time + 60).strftime('%b %d %Y %H:%M%p') %>
 		    </td>
-		    <td><%= link_to "Edit", edit_room_booking_path(@room, booking) %></td>
-	        <td><%= link_to "Delete", room_booking_path(@room, booking), data: { confirm: 'Are you sure?' }, method: :delete , style: "color: red"%></td>
+		    <td><%= link_to "Edit Reservation", edit_room_booking_path(@room, booking), style: "color: orange" %></td>
+	        <td><%= link_to "Delete Reservation", room_booking_path(@room, booking), data: { confirm: 'Are you sure?' }, method: :delete , style: "color: red"%></td>
 		    <br>
 
 		  </tr>

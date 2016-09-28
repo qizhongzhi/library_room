@@ -23,11 +23,11 @@
 
            <% if user_signed_in? %>
            <% @user = current_user %>
-           <% if @user.user_type <=2 %>
-            <li><%= link_to "Userlist", users_path %></li>
-           <% end %>
             <li><%= link_to "My Profile", user_path(@user) %></li>
             <li><%= link_to "My Reservation", reservations_user_path(@user) %></li>
+           <% if @user.user_type <=2 %>
+            <li><%= link_to "Userlist (and their reservations)", users_path %></li>
+           <% end %>
           <% end %>
           
         </ul> 

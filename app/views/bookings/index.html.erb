@@ -8,15 +8,16 @@
     <th></th>
   </tr>
 
-
+  <% @room.status= "Available" %>
+  <% @room.update_attributes(:status => "Available") %> 
   <% @bookings.each do |booking| %>
-      <% if booking.start_time < Time.current %>
-          <% @room.status = "Booked" %>
-          <% @room.update_attributes(:status => "Booked") %>
-      <% else %>
-          <% @room.status= "Available" %>
-          <% @room.update_attributes(:status => "Available") %>
-      <% end %>
+        <% if booking.start_time < Time.current %>
+            <% @room.status = "Booked" %>
+            <% @room.update_attributes(:status => "Booked") %>
+        <% else %>
+            <% @room.status= "Available" %>
+            <% @room.update_attributes(:status => "Available") %>
+        <% end %>
   <% end %>
 
   <% if @room.status == "Booked" %>

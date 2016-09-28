@@ -10,6 +10,7 @@ module Bookable
     validates :length, presence: true, numericality: { greater_than: 0 }
     validate :start_date_cannot_be_in_the_past
     validate :start_date_cannot_be_in_week_advance
+    validate :destory_booking_after_endtime
     validate :overlaps
 
     before_validation :calculate_end_time

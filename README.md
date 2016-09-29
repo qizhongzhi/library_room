@@ -14,9 +14,9 @@ Use Heroku as the online development framework. The link of the room booking web
 
 `https://floating-taiga-45578.herokuapp.com/`
 
-You cannot sign up as admin user, however the admin user can be assigned by using the existing admin accounts to edit the user profile (set the user type from "User" to "Admin").
+You cannot sign up as an admin user, however the admin user can be assigned by using the existing admin accounts to edit the user profile (set the user type from "User" to "Admin").
 
-You can log in as Precinfigured Admin, Admin, or Library Member. The usernames and passwords we preconfigured in the system is as following:
+You can log in as a Precinfigured Admin, Admin, or Library Member. The usernames and passwords we preconfigured in the system is as following:
   
 Preconfigured Admin account: trump@gmail.com Key: donaldtrump  
 Admin account: hillary@gmail.com Key:hillaryclinton  
@@ -43,9 +43,29 @@ First, a user account needs to be signed up in the website with his/her email, p
 `@user.save`  
 `exit`  
 
-
 ####Advanced Search 
 User can use advanced search to search room using name, size and location.  
+
+####Special test case A: The system can handle the scenario where an admin deletes a room that has a reservation.
+
+
+####Special test case B: The system can handle the scenario that admins delete library member who have currently reserved a room.
+
+#### Extra credit features
+The admin can make multiple reservations for a library member. 
+
+
+####Matters needing attention
+1. When an admin changes his/hers status to user, he/she has no authority to update him/herself to admin again. Only the preconfigured admin has the authority to update user back to admin.     
+2. When an admin/user does not log in, it will only show the number of the room and the admin/user can not see other information.  
+3. An admin can change the bookings of preconfigured admin and users, and users cannot change the bookings of amin and preconfigure admin.  
+4. The booking history will always be recorded which will be show at 'My reservation', even if the booking is over.
+5. The status of the room will change from 'booked' to 'available' if the reservation is deleted. 
+6. The booking time is quite flexible, which can be one hour and two hours, and the start time can be from **:00, **:15, **:30, and **:45.  
+7. When users finish the booking early, they can delete the booking manually by deleting his booking record. Also when the booking time is over, the room will be released automatically.  
+8. When the room is booked beyond one week from present day, it will show prohibit error 'Start time cannot be booked beyond a week'.  
+9. The booking history for a particular user is stored in 'My Reservation' 
+  
 
 ####User Permissions
 1. Preconfigured admin:  
@@ -78,15 +98,6 @@ View everyone's profile
 Book room
 Delete his/her booking reservation  
 View the his/her booking history of a room
-
-
-####Matters needing attention
-1. When users finish the booking early, they can delete the booking manually by deleting his booking record. Also when the booking time is over, the room will be released automatically.  
-2. When the room is booked beyond one week from present day, it will show prohibit error 'Start time cannot be booked beyond a week'.  
-3. When choosing 'Show all Bookings', it will show the booking time of the definite room, the user name who is booking the room and its status. 
-4. When viewing the reservation history of library member, directly choose 'See All Bookings' and see the library member.  
-5. The root path website of 'Library Room Booking' shows 'Room Number', 'Show all bookings' and 'Add booking'. 
-6. The booking history for a partcular user is stored in different rooms' booking history 
 
 
 

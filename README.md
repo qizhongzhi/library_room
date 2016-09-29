@@ -32,9 +32,9 @@ User account: obama@gmail.com Key:barackobama
 `rails server`  
 `rake db:migrate` 
 
-####The database is empty now which needs to be added preconfigured Admin, Admin, Library Members and Rooms. 
+####The database is empty now and needs to add Preconfigured Admin, Admin, Library Members and Rooms. 
 
-The preconfigured Admin needs to be created in the command line for safety. 
+The preconfigured Admin needs to be assigned in the command window for safety. 
 First, a user account needs to be signed up in the website with his/her email, password, name, address and telephone number. Then set this user as the configured member in the rails console using the following commands.  
 `rails console`  
 `User.connection`  
@@ -43,29 +43,24 @@ First, a user account needs to be signed up in the website with his/her email, p
 `@user.save`  
 `exit`  
 
-####Advanced Search 
-User can use advanced search to search room using name, size and location.  
-
-####Special test case A: The system can handle the scenario where an admin deletes a room that has a reservation.
+####Special case A: The system can handle the scenario where an admin deletes a room that has a reservation.
+When a room is deleted, the reservations for that room will be deleted too.
 
 
-####Special test case B: The system can handle the scenario that admins delete library member who have currently reserved a room.
-
-#### Extra credit features
-The admin can make multiple reservations for a library member. 
-
+####Special case B: The system can handle the scenario that admins delete library member who have currently reserved a room.
+When a account is deleted, the reservations made by that account will be deleted too.
 
 ####Matters needing attention
-1. When an admin changes his/hers status to user, he/she has no authority to update him/herself to admin again. Only the preconfigured admin has the authority to update user back to admin.     
-2. When an admin/user does not log in, it will only show the number of the room and the admin/user can not see other information.  
-3. An admin can change the bookings of preconfigured admin and users, and users cannot change the bookings of amin and preconfigure admin.  
-4. The booking history will always be recorded which will be show at 'My reservation', even if the booking is over.
-5. The status of the room will change from 'booked' to 'available' if the reservation is deleted. 
-6. The booking time is quite flexible, which can be one hour and two hours, and the start time can be from **:00, **:15, **:30, and **:45.  
-7. When users finish the booking early, they can delete the booking manually by deleting his booking record. Also when the booking time is over, the room will be released automatically.  
-8. When the room is booked beyond one week from present day, it will show prohibit error 'Start time cannot be booked beyond a week'.  
-9. The booking history for a particular user is stored in 'My Reservation' 
-  
+1. In the "/roms/(room id)/bookings" page, the account name for the booking will only show to the owner of the booking and the admin users. Neither will the unlogged user see the booking name.
+2. If the reservation expired, it will not show in the "/roms/(room id)/bookings" page.
+3. All the booking records will be recorded in "/users/(user id)/reservations", even if the reservation expired.
+4. In the "/rooms/(room id))" page, the status info shows the usage infomation of the room at the current time. If the room is currently in use, it will shows "Booked", vise versa. If the room is booked and the current reservation is deleted, the room status will be updated automatically from "Booked" to "Available" 
+5. The booking time be one hour and two hours, and the start time can be from "**:00", "**:15", "**:30", and "**:45".  
+6. When users finish the booking early, they can delete the booking manually by deleting his booking record. Also the room will be released automatically, when the booking time is over.  
+7. All the bookings are limited to start within on week since current time. 
+8.User can use advanced search to search room using name, size, status and location, there is no requirements for using how many criteria. Also they can search by room name at the root page.
+9. If user book the room for a invalid date, such as "September 31st", the system will automatically search for the next valid date, for this case is "October 1st".
+10. The User List "/users" page can be access by all the admin user and they can access all the users' and admins' booking history in that page.
 
 ####User Permissions
 1. Preconfigured admin:  
@@ -76,28 +71,29 @@ Add new library member or admin while logging in
 Add room with corresponding room number, building and size   
 Book room
 Book room on behalf of others 
-Delete everyons's booking reservation  
-View the everyons's booking history of a room
-Delete a room from the system  
+Delete other's booking reservation  
+View the other's booking history of a room
+Delete a room from the system 
+View the future reservations for a particular room (with booking account name)
 
 2. Admin:
 Edit and view his/her account and profile  
-Edit and delete everyone's account and profile except herself/himself and preconfigured admin  
+Edit and delete everyone's account and profile except preconfigured admin 
 Add new library member or adimins while logging in  
 View everyone's profile  
 Add room with corresponding room number, building and size  
 Book room
 Book room on behalf of others
-Delete everyons's booking reservation  
-View the everyons's booking history of a room
+Delete other's booking reservation  
+View the other's booking history of a room
 Delete a room from the system    
+View the future reservations for a particular room (with booking account name)
 
 3. Library Member:  
-Edit, view and delete his/her account and profile    
-View everyone's profile  
+Edit, view and delete only his/her account and profile    
 Book room
-Delete his/her booking reservation  
-View the his/her booking history of a room
-
+Delete only his/her booking reservation  
+View the only his/her booking history of a room
+View the future reservations for a particular room (without booking account name)
 
 
